@@ -1,0 +1,42 @@
+<nav class="navbar bg-dark ">
+    <div class="container-fluid ms-5 ">
+      <a class="navbar-brand text-light d-flex align-items-center justify-content-center" href="#">
+        <i class="fa-solid fa-clipboard-check fa-2x me-2" style="color: #62ff3b;"></i>
+       <span style="font-size: 200%;">To~Dos <i class="fa-solid fa-check fa-1x me-2" style="color: #62ff3b;"></i>
+       </span> 
+      </a>
+    </div>
+  </nav>
+
+  <div class="d-flex align-items-center justify-content-center container w-100">
+    <div class="bg-dark  mt-4 mb-3 rounded" style="width: 90%;">
+        <div class="d-flex align-items-center justify-content-center text-light p-4" style="font-size: 200%;">
+            Add Your Tasks
+        </div>
+        <form #addTaskForm="ngForm" action="" class="text-light">
+          <div class="form-floating mb-2 p-2">
+            <input name="taskDate" [(ngModel)]="user.taskDate"  type="date" class="form-control bg-dark text-light" 
+            required  id="floatingDate" placeholder="name@example.com"
+            #taskDate="ngModel">
+            <label for="floatingTaskNoInput">Date</label>
+          </div>
+          <div class="ms-3 mb-4 text-danger fw-bolder" *ngIf="taskDate.invalid && taskDate.touched">*invalid task number</div>
+            <div class="form-floating mb-2 p-2">
+    <input name="taskTitle" [(ngModel)]="user.taskTitle" type="text" class="form-control bg-dark text-light"
+    required  #taskTitle="ngModel" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Task</label>
+              </div>
+              <div class="ms-3 mb-4 text-danger fw-bolder" *ngIf="taskTitle.invalid && taskTitle.touched">*please enter the task</div>
+              <div class="form-floating p-2">
+                <textarea name="taskDetails" [(ngModel)]="user.taskDetails" class="form-control bg-dark text-light" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Details</label>
+              </div>
+              <div class="d-flex align-items-center  p-2">
+                <button (click)="addTask()" type="submit" [disabled]="addTaskForm.invalid"
+                 class="btn btn-outline-success btn-lg">Add</button>
+                <button routerLink="/home" class="btn btn-outline-danger btn-lg ms-3">Back</button>
+              </div>
+        </form>
+    </div>
+    <!-- <pre>{{user.taskTitle}}</pre> -->
+  </div>

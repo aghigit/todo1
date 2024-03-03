@@ -1,0 +1,67 @@
+
+<nav class="navbar bg-dark ">
+    <div class="container-fluid ms-5 ">
+      <a class="navbar-brand text-light d-flex align-items-center justify-content-center" href="#">
+        <i class="fa-solid fa-clipboard-check fa-2x me-2" style="color: #62ff3b;"></i>
+       <span style="font-size: 200%;">To~Dos <i class="fa-solid fa-check fa-1x me-2" style="color: #62ff3b;"></i>
+       </span> 
+      </a>
+      <button (click)="logOut()" class="btn btn-danger me-3">logout</button>
+    </div>
+  </nav> 
+
+  <div class="d-flex align-items-center justify-content-center container w-100">
+    <div class="bg-dark  mt-4 rounded" style="width: 90%;">
+        <div class="d-flex align-items-center justify-content-center text-light p-4" style="font-size: 200%;">
+            Preview/Edit Your Tasks
+        </div>
+        <!-- <form action="" class="text-light">
+            <div class="form-floating mb-3 p-2">
+                <input type="text" class="form-control bg-dark" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Edit Task</label>
+              </div>
+              <div class="form-floating p-2">
+                <textarea class="form-control bg-dark text-light" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Edit Details</label>
+              </div>
+              <div class="d-flex align-items-center  p-2">
+                <button class="btn btn-outline-success btn-lg">Update</button>
+                <button routerLink="/home" class="btn btn-outline-danger btn-lg ms-3">Back</button>
+              </div>
+        </form> -->
+
+        <form #editTaskForm="ngForm" action="" class="text-light">
+            <div class="form-floating mb-2">
+              <select name="taskStatus" [(ngModel)]="user.taskStatus" class="form-select bg-dark text-light" id="floatingSelect" aria-label="Floating label select example">
+                <!-- <option selected class="bg-primary">gfh</option> -->
+                <option class="text-success" value="1">Completed</option>
+                <option  class="text-danger" value="2">Incompleted</option>
+              </select>
+              <label for="floatingSelect">Task-Status</label>
+            </div>  
+          <div class="form-floating mb-2 p-2">
+            <input name="taskDate" [(ngModel)]="user.taskDate"  type="date" class="form-control bg-dark text-light" 
+            required  id="floatingInput" placeholder="name@example.com"
+            #taskDate="ngModel">
+            <label for="floatingTaskDateInput">Date</label>
+          </div>  
+          <div class="form-floating mb-2 p-2">
+    <input name="taskTitle" [(ngModel)]="user.taskTitle" type="text" class="form-control bg-dark text-light"
+    required  #taskTitle="ngModel" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Task</label>
+              </div>
+              <div class="ms-3 mb-4 text-danger fw-bolder" *ngIf="taskTitle.invalid && taskTitle.touched">*please enter the task</div>
+              <div class="form-floating p-2">
+                <textarea name="taskDetails" [(ngModel)]="user.taskDetails" class="form-control bg-dark text-light" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Details</label>
+              </div>
+              <div class="d-flex align-items-center  p-2">
+                <button (click)="updateTodosdetails(user.id)" type="submit" [disabled]="editTaskForm.invalid"
+                 class="btn btn-outline-success btn-lg">Update</button>
+                <button (click)="cancel(user.id)"  class="btn btn-outline-primary ms-3 btn-lg">Cancel</button>
+                <button routerLink="/home" class="btn btn-outline-danger btn-lg ms-3">Back</button>
+              </div>
+        </form>
+
+      </div>
+  </div>

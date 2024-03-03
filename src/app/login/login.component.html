@@ -1,0 +1,36 @@
+
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh; width: 100%; ">
+    <div  style="width: 90%;" class="row text-light rounded d-flex align-items-center justify-content-center bg-dark p-4">
+        
+        <div class=" col-lg-6  d-flex align-items-center justify-content-center bg-dark">
+            <i class="fa-solid fa-clipboard-check fa-2x me-2" style="color: #62ff3b;"></i>
+            <span style="font-size: 300%;">To~Dos <i class="fa-solid fa-check fa-1x me-2" style="color: #62ff3b;"></i>.
+            </span>
+        </div>
+        <div class="col-lg-6  bg-dark text-light">
+            <form #loginform="ngForm" class="border p-3 rounded" action="" (ngSubmit)="logIn()">
+                <h1 class="class=text-light d-flex align-items-center justify-content-center p-3">login 
+                    <span style="color: #62ff3b;">.</span>
+                </h1>
+                <div class="form-floating mb-2">
+                    <input  name="email" [(ngModel)]="email" type="email" class="form-control bg-dark text-light" 
+                    id="floatingInput" placeholder="name@example.com"
+                   email required  #useremailInput="ngModel">
+                    <label for="floatingInput">Email address</label>
+                    <p class="ms-2">email: todo@gmail.com</p>
+                  </div>
+                  <div *ngIf="useremailInput.invalid && useremailInput.touched" class="fw-bolder text-danger mb-3">*Invali Email..</div>
+                  <div class="form-floating">
+                    <input name="password" [(ngModel)]="password" type="password" class="form-control bg-dark mb-1 text-light" id="floatingPassword" placeholder="Password"
+                    required pattern="[a-zA-Z0-9]*" minlength="3" #userinputPassword="ngModel" >
+                    <label for="floatingPassword">Password</label>
+                    <p class="ms-2">password: 1234</p>
+                  </div>
+                  <div *ngIf="userinputPassword.invalid && useremailInput.touched" class="fw-bolder text-danger mb-3">*Invali Password..</div>
+                  <div class="d-grid">
+                    <button type="submit" [disabled]="loginform.invalid && loginform.touched" class="btn btn-success">Login</button>
+                  </div>
+            </form>
+        </div>
+    </div>
+</div>
